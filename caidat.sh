@@ -4,9 +4,9 @@ rm -f $HOME/*.apk
 rm -f $HOME/*.sh
 echo "Clean up old files done."
 
-wget -O $HOME/tai-files.sh "https://raw.githubusercontent.com/trunghieu1604/r1-ai/main/tai-files.sh"
-wget -O $HOME/cai-dat-ai-v3.sh "https://raw.githubusercontent.com/trunghieu1604/r1-ai/main/cai-dat-ai.sh"
-wget -O $HOME/cai-dat-dlna-unisound.sh "https://raw.githubusercontent.com/trunghieu1604/r1-ai/main/cai-dat-dlna-unisound.sh"
+wget -O $HOME/tai-files.sh "https://raw.githubusercontent.com/thutrang0410/vietbot/main/tai-files.sh"
+wget -O $HOME/cai-dat-ai-v3.sh "https://raw.githubusercontent.com/thutrang0410/vietbot/main/cai-dat-ai.sh"
+wget -O $HOME/cai-dat-dlna-unisound.sh "https://raw.githubusercontent.com/thutrang0410/vietbot/main/cai-dat-dlna-unisound.sh"
 chmod +x $HOME/tai-files.sh
 chmod +x $HOME/cai-dat-ai-v3.sh
 chmod +x $HOME/cai-dat-dlna-unisound.sh
