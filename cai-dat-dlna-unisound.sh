@@ -22,7 +22,7 @@ is_device_connected() {
 }
 
 log_info() {
-    echo "[Trhieu] $*"
+    echo "[ThuTrang] $*"
 }
 
 connect_adb() {
