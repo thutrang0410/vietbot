@@ -8,7 +8,7 @@ wget -O $HOME/tai-files.sh "https://raw.githubusercontent.com/thutrang0410/vietb
 wget -O $HOME/cai-dat-ai.sh "https://raw.githubusercontent.com/thutrang0410/vietbot/main/cai-dat-ai.sh"
 wget -O $HOME/cai-dat-dlna-unisound.sh "https://raw.githubusercontent.com/thutrang0410/vietbot/main/cai-dat-dlna-unisound.sh"
 chmod +x $HOME/tai-files.sh
-chmod +x $HOME/cai-dat-ai-v3.sh
+chmod +x $HOME/cai-dat-ai.sh
 chmod +x $HOME/cai-dat-dlna-unisound.sh
 
 echo "[1/3] Chuan bi cai dat..."
