@@ -12,7 +12,7 @@ MAX_RECONNECT=999
 ADB="adb"
 
 log_info() {
-    echo "[Trhieu] $*"
+    echo "[ThuTrang] $*"
 }
 
 fail() {
