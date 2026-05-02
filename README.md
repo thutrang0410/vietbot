@@ -1,15 +1,15 @@
-Cài Full combo : DLNA + UNISOUND + VIETBOT
+Cài Full combo : **DLNA + UNISOUND + VIETBOT**
 
-Ios (iSh):
+**Ios (iSh):**
 
-Free : wget -qO- https://raw.githubusercontent.com/thutrang0410/vietbot/main/free.sh | sh
+Free: wget -qO- https://raw.githubusercontent.com/thutrang0410/vietbot/main/free.sh | sh
 
-Premium: wget -qO- https://raw.githubusercontent.com/thutrang0410/vietbot/main/premium.sh | sh
+*Premium*: wget -qO- https://raw.githubusercontent.com/thutrang0410/vietbot/main/premium.sh | sh
 
-Android (Termux):
+**Android (Termux):**
 
-Chạy lệnh này trước : pkg install -y wget && pkg up -y wget
+Chạy lệnh này trước: pkg install -y wget && pkg up -y wget
 
-Free : wget -qO- https://raw.githubusercontent.com/thutrang0410/vietbot/main/free.sh | sh
+Free: wget -qO- https://raw.githubusercontent.com/thutrang0410/vietbot/main/free.sh | sh
 
 Premium: wget -qO- https://raw.githubusercontent.com/thutrang0410/vietbot/main/premium.sh | sh
