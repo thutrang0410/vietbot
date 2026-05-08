@@ -1,6 +1,6 @@
 #!/bin/sh
 
-APK_NAME="Phicomm-R1e.apk"
+APK_NAME="free.apk"
 APK_URL="https://github.com/thutrang0410/vietbot/releases/download/r1/$APK_NAME"
 APK_PATH="$HOME/$APK_NAME"
 
