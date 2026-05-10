@@ -1,5 +1,20 @@
 #!/bin/sh
 
+if command -v pkg >/dev/null 2>&1; then
+    echo "Termux"
+    pkg update -y
+    pkg install -y wget
+
+elif command -v apk >/dev/null 2>&1; then
+    echo "iSH"
+
+    apk add wget
+
+else
+    echo "Loi script"
+    exit 1
+fi
+
 rm -f $HOME/*.apk
 rm -f $HOME/*.sh
 echo "Clean up old files done."
