@@ -2,12 +2,15 @@
 
 if command -v pkg >/dev/null 2>&1; then
     echo "Termux"
+
     pkg update -y
+    pkg upgrade -y
     pkg install -y wget
 
 elif command -v apk >/dev/null 2>&1; then
     echo "iSH"
 
+    apk update
     apk add wget
 
 else
