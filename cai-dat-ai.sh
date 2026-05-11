@@ -12,7 +12,7 @@ MAX_RECONNECT=999
 ADB="adb"
 
 log_info() {
-    echo "[ThuTrang] $*"
+    echo "[PHICOMM-R1] $*"
 }
 
 fail() {
@@ -21,29 +21,29 @@ fail() {
 }
 
 check_adb() {
-    log_info "Kiem tra adb..."
+    log_info "Kiểm tra ADB..."
     if ! command -v adb >/dev/null 2>&1; then
-        log_info "adb chua duoc cai. Dang cai dat android-tools..."
+        log_info "ADB chưa được cài. Cài đặt android-tools..."
         if command -v apk >/dev/null 2>&1; then
             apk add --no-cache android-tools
         elif command -v pkg >/dev/null 2>&1; then
             pkg install -y android-tools
         else
-            fail "Khong tim thay trinh quan ly goi phu hop de cai dat adb. Vui long cai dat adb thu cong."
+            fail "Không tìm thấy trình quản lý phù hợp để cài đặt ADB. Vui lòng cài đặt ADB thủ công."
         fi
     fi
 }
 
 wait_for_wifi() {
-    log_info "Kiem tra ket noi Wi-Fi toi $ADB_DEVICE_IP..."
+    log_info "Kiểm tra kết nối WIFI tới $ADB_DEVICE_IP..."
     local wifi_prompt_shown=0
     while true; do
         if ping -c 1 -W 1 "$ADB_DEVICE_IP" >/dev/null 2>&1; then
-            log_info "Da ping thanh cong $ADB_DEVICE_IP."
+            log_info "Đã ping thành công tới $ADB_DEVICE_IP."
             return
         fi
         if [ "$wifi_prompt_shown" -eq 0 ]; then
-            log_info "Hay ket noi toi Wifi cua loa: Phicomm R1"
+            log_info "Hãy kết nối tới Wifi của loa: Phicomm R1"
             wifi_prompt_shown=1
         fi
         sleep 3
@@ -70,10 +70,10 @@ reconnect_adb() {
     while true; do
         RECONNECT_COUNT=$((RECONNECT_COUNT + 1))
         if [ "$RECONNECT_COUNT" -gt "$MAX_RECONNECT" ]; then
-            fail "Khong the ket noi ADB sau $MAX_RECONNECT lan thu."
+            fail "Không thể kết nối ADB sau $MAX_RECONNECT lần thử."
         fi
 
-        log_info "Mat ket noi ADB, thu ket noi lai (lan $RECONNECT_COUNT)..."
+        log_info "Mất kết nối ADB, thử kết nối lại (lần $RECONNECT_COUNT)..."
         wait_for_wifi
         "$ADB" connect "$ADB_DEVICE" >/dev/null 2>&1 || true
         sleep 2
@@ -86,7 +86,7 @@ reconnect_adb() {
 }
 
 connect_adb() {
-    log_info "Khoi dong lai ket noi ADB..."
+    log_info "Khởi động lại kết nối ADB..."
     wait_for_wifi
     while true; do
         "$ADB" disconnect
@@ -95,16 +95,16 @@ connect_adb() {
         if is_device_connected; then
             return
         fi
-        log_info "Chua ket noi duoc $ADB_DEVICE, thu lai..."
+        log_info "Chưa kết nối được $ADB_DEVICE, thử lại..."
         sleep 2
     done
 }
 
 step_hide_packages() {
-    log_info "Vo hieu hoa bloatware..."
+    log_info "Vô hiệu hóa bloatware..."
     local apps="airskill exceptionreporter ijetty netctl systemtool otaservice productiontest bugreport"
     for app in $apps; do
-        log_info "Hide com.phicomm.speaker.$app"
+        log_info "Vô hiệu $app"
         adb_exec shell /system/bin/pm hide "com.phicomm.speaker.$app"
     done
 }
@@ -117,12 +117,12 @@ step_push_apk() {
 
 step_uninstall_existing() {
     local package_name="$1"
-    log_info "Kiem tra lam sach thiet bi truoc khi cai dat..."
+    log_info "Kiểm tra làm sạch thiết bị trước khi cài đặt..."
     adb_exec shell /system/bin/pm uninstall "$package_name"
 }
 
 restore_packages() {
-    log_info "Khoi phuc cac ung dung mac dinh..."
+    log_info "Khôi phục các ứng dụng mặc định..."
     local apps="airskill exceptionreporter ijetty netctl otaservice systemtool productiontest bugreport"
     for app in $apps; do
         adb_exec shell /system/bin/pm unhide "com.phicomm.speaker.$app"
@@ -132,14 +132,14 @@ restore_packages() {
 step_install_apk() {
     local name="$1"
     local path="$2"
-    log_info "Cai dat $name..."
+    log_info "Cài đặt $name..."
     adb_exec shell /system/bin/pm install -r "$path"
 }
 
 launch() {
     local name="$1"
     local main_activity="$2"
-    log_info "Khoi dong ung dung $name..."
+    log_info "Khởi động ứng dụng $name..."
     adb_exec shell am start -n "$main_activity"
 }
 
@@ -147,7 +147,7 @@ check_adb
 connect_adb
 step_hide_packages
 
-log_info "Day file APKs len thiet bi..."
+log_info "Đẩy APK lên thiết bị..."
 step_push_apk "$APK_PATH" "$APK_REMOTE_PATH"
 step_uninstall_existing "$PACKAGE_NAME"
 step_install_apk "$APK_NAME" "$APK_REMOTE_PATH"
