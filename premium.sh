@@ -94,7 +94,7 @@ echo "[2/3] Cài đặt Vietbot."
 
 echo ""
 echo "[3/3] Cài đặt Âm thanh."
-"$HOME/dlna-uni.sh"
+"$HOME/dlna-uni.sh" 192.168.43.1:5555
 
 echo ""
 echo "Cài đặt hoàn tất."
