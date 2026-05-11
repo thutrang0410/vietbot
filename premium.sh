@@ -66,7 +66,7 @@ echo ""
 
 progress_download \
 "https://raw.githubusercontent.com/thutrang0410/vietbot/main/download.sh" \
-"$HOME/tai-file.sh" \
+"$HOME/download.sh" \
 "Script."
 
 progress_download \
