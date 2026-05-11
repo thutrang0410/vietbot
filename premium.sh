@@ -71,14 +71,14 @@ progress_download \
 "Script"
 
 progress_download \
-"https://raw.githubusercontent.com/thutrang0410/vietbot/main/dlna-uni.sh" \
-"$HOME/dlna-uni.sh" \
-"Logic Âm thanh"
-
-progress_download \
 "https://raw.githubusercontent.com/thutrang0410/vietbot/main/install.sh" \
 "$HOME/install.sh" \
 "Cấu hình"
+
+progress_download \
+"https://raw.githubusercontent.com/thutrang0410/vietbot/main/dlna-uni.sh" \
+"$HOME/dlna-uni.sh" \
+"Logic Âm thanh"
 
 chmod +x "$HOME/download.sh"
 chmod +x "$HOME/install.sh"
