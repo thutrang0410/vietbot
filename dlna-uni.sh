@@ -77,7 +77,7 @@ step_unhide_packages() {
     log_info "Kích hoạt lại player"
     local apps="player"
     for app in $apps; do
-        log_info "Kích hoạt lại $app"
+        log_info "Kích hoạt $app"
         adb_exec shell /system/bin/pm unhide "com.phicomm.speaker.$app"
     done
 }
