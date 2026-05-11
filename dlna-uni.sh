@@ -22,18 +22,18 @@ is_device_connected() {
 }
 
 log_info() {
-    echo "[ThuTrang] $*"
+    echo "[PHICOMM-R1] $*"
 }
 
 connect_adb() {
-    log_info "Khoi dong lai ket noi ADB..."
+    log_info "Khởi động lại kết nối ADB..."
     while true; do
         "$ADB" kill-server
         "$ADB" connect "$ADB_DEVICE"
         if is_device_connected; then
             return
         fi
-        log_info "Chua ket noi duoc $ADB_DEVICE, thu lai..."
+        log_info "Chưa kết nối được $ADB_DEVICE, thử lại..."
         sleep 2
     done
 }
@@ -54,29 +54,29 @@ step_push_apk() {
 step_install_apk() {
     local name="$1"
     local path="$2"
-    log_info "Cai dat $name..."
+    log_info "Cài đặt $name..."
     adb_exec shell /system/bin/pm install -r "$path"
 }
 
 step_reboot_device() {
-    log_info "Khoi dong lai thiet bi..."
+    log_info "Khởi động lại thiết bị..."
     adb_exec reboot &
 }
 
 step_hide_packages() {
-    log_info "Vo hieu hoa bloatware..."
+    log_info "Vô hiệu hóa bloatware..."
     local apps="device airskill exceptionreporter systemtool otaservice productiontest bugreport"
     for app in $apps; do
-        log_info "Hide com.phicomm.speaker.$app"
+        log_info "Vô hiệu hóa $app"
         adb_exec shell /system/bin/pm hide "com.phicomm.speaker.$app"
     done
 }
 
 step_unhide_packages() {
-    log_info "Kich hoat lai player"
+    log_info "Kích hoạt lại player"
     local apps="player"
     for app in $apps; do
-        log_info "Unhide com.phicomm.speaker.$app"
+        log_info "Kích hoạt lại $app"
         adb_exec shell /system/bin/pm unhide "com.phicomm.speaker.$app"
     done
 }
