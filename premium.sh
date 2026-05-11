@@ -93,7 +93,7 @@ echo "[2/3] Cài đặt Âm thanh."
 
 echo""
 echo "[3/3] Cài đặt Vietbot."
-"$HOME/vietbot.sh" || true
+"$HOME/install.sh" || true
 
 echo "Cài đặt hoàn tất."
 echo "Vào wifi Phicomm R1, truy cập http://192.168.43.1:8081 để cấu hình Wi-Fi cho thiết bị."
