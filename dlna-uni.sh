@@ -88,9 +88,12 @@ allow_install_non_market_apps() {
 ensure_device_connection
 allow_install_non_market_apps
 
+echo "Đẩy APK lên thiết bị..."
 step_push_apk "$DLNA_APK_LOCAL_PATH" "$DLNA_APK_REMOTE_PATH"
 step_install_apk "$DLNA_APK_NAME" "$DLNA_APK_REMOTE_PATH"
 
+echo ""
+echo "Đẩy APK lên thiết bị..."
 step_push_apk "$UNISOUND_APK_LOCAL_PATH" "$UNISOUND_APK_REMOTE_PATH"
 step_install_apk "$UNISOUND_APK_NAME" "$UNISOUND_APK_REMOTE_PATH"
 
