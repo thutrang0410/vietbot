@@ -27,6 +27,7 @@ progress_download() {
 
     printf "\r[##########] 100%%\n"
 }
+
 echo ""
 echo "===================================="
 echo "||  CÀI ĐẶT VIETBOT BY THU TRANG  ||"
@@ -38,7 +39,7 @@ if command -v pkg >/dev/null 2>&1; then
     echo ""
     echo "Vui lòng chờ cài đặt các gói."
     echo ""
-    
+
     pkg upgrade -y >/dev/null 2>&1
     pkg install -y curl >/dev/null 2>&1
 
@@ -67,33 +68,34 @@ echo ""
 progress_download \
 "https://raw.githubusercontent.com/thutrang0410/vietbot/main/download.sh" \
 "$HOME/download.sh" \
-"Script."
+"Script"
 
 progress_download \
 "https://raw.githubusercontent.com/thutrang0410/vietbot/main/dlna-uni.sh" \
 "$HOME/dlna-uni.sh" \
-"Logic Âm thanh."
+"Logic Âm thanh"
 
 progress_download \
 "https://raw.githubusercontent.com/thutrang0410/vietbot/main/install.sh" \
 "$HOME/install.sh" \
-"Cấu hình."
+"Cấu hình"
 
 chmod +x "$HOME/download.sh"
-chmod +x "$HOME/dlna-uni.sh"
 chmod +x "$HOME/install.sh"
+chmod +x "$HOME/dlna-uni.sh"
 
-echo""
+echo ""
 echo "[1/3] Chuẩn bị cài đặt."
 "$HOME/download.sh"
 
-echo""
-echo "[2/3] Cài đặt Âm thanh."
-"$HOME/dlna-uni.sh"
-
-echo""
-echo "[3/3] Cài đặt Vietbot."
+echo ""
+echo "[2/3] Cài đặt Vietbot."
 "$HOME/install.sh" || true
 
+echo ""
+echo "[3/3] Cài đặt Âm thanh."
+"$HOME/dlna-uni.sh"
+
+echo ""
 echo "Cài đặt hoàn tất."
 echo "Vào wifi Phicomm R1, truy cập http://192.168.43.1:8081 để cấu hình Wi-Fi cho thiết bị."
